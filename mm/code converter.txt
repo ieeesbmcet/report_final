@@ -1,0 +1,92 @@
+CODE CONVERTER
+
+(A) ASCII TO BCD
+
+1000	MOV AL,[1100]
+1004	MOV BL,30
+1007	CMP AL,BL
+1009	JC 101A
+100B	CMP AL,40
+100E	JNC 101A
+1010	SUB AL,30
+1013	MOV [1101],AL
+1017	JMP 1021
+101A	MOV BL,11
+101D	MOV [1101],BL
+1021	HLT
+
+(B) BCD TO ASCII
+
+1000	MOV AL,[2000]
+1004	MOV BL,0A
+1007	CMP AL,BL
+1009	JNC 1015
+100B	ADD AL,30H
+100E	MOV [2001],AL
+1012	JMP HLT
+1015	MOV [2001],11
+101A 	HLT
+
+(C) HEX TO ASCII
+
+1000	MOV AL,[2000]
+1004	CMP AL,10H
+1007 	JNC 101A
+1009	CMP AL,0A
+100B	JC 1013
+100C	ADD AL,37H
+1010	JMP 101C
+1013	ADD AL,30H
+1018	JMP 101C
+101A	MOV AL,11
+101C	MOV [2001],AL
+101D	HLT
+
+(D) ASCII TO HEX
+
+1000	MOV AL,[2000]
+1004	CMP AL,40
+1007	JE 101E
+1009	CMP AL,29
+100B	JC 101E
+100C	CMP AL,40
+1010	JNC 101A
+1013	SUB AL,30
+1018	JMP 101F
+101A	SUB AL,37H
+101C	JMP 101F
+101D	MOV AL,11
+101E	MOV [2001],AL
+101F	HLT
+
+
+//algorithm
+Here are the concise algorithms formatted as you requested:
+
+### (A) ASCII to BCD
+1. Load ASCII value into register AL.
+2. Compare AL with '0' (30h).
+3. If less than '0', store 11.
+4. If between '0' and '9', convert by subtracting 30h.
+5. Store the BCD value.
+
+### (B) BCD to ASCII
+1. Load BCD value into register AL.
+2. Compare AL with 0A.
+3. If greater than or equal to 0A, store 11.
+4. If less than 0A, convert by adding 30h.
+5. Store the ASCII value.
+
+### (C) HEX to ASCII
+1. Load HEX value into register AL.
+2. Compare AL with 10h.
+3. If less than 10h, check if less than 0Ah.
+4. If less than 0Ah, convert by adding 30h; else, add 37h.
+5. Store the ASCII value.
+
+### (D) ASCII to HEX
+1. Load ASCII value into register AL.
+2. Compare AL with '0' (30h).
+3. If less than or equal to '9', convert by subtracting 30h.
+4. If between 'A' and 'F', convert by subtracting 37h.
+5. Store the HEX value.

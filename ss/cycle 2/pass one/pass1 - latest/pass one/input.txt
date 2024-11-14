@@ -1,0 +1,10 @@
+COPY    START   1000
+FIRST   LDA     FIVE
+-       STA     ALPHA
+-       LDCH    CHARZ
+-       STCH    C1
+-       END     FIRST
+FIVE    WORD    5
+ALPHA   RESW    1
+CHARZ   BYTE    C'Z'
+C1      RESB    1

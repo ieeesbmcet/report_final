@@ -1,0 +1,92 @@
+8051 8 BIT NUMBERS ARITHMETIC
+
+(A) ADDITION
+
+4100	MOV DPTR,#4200
+4103	MOV R0,#00
+4105	MOVX A,@DPTR
+4106	MOV B,A
+4108	INC DPTR
+4109	MOVX A,@DPTR
+410A	ADD A,B
+410C	JC 4110
+410E	SJMP 4111
+4110	INC R0
+4111	INC DPTR
+4112	MOVX @DPTR,A
+4113	INC DPTR
+4114	MOV A,R0
+4115	MOVX @DPTR,A
+4116	SJMP 4116
+
+(B) SUBTRACTION
+
+4100	MOV DPTR,#4200
+4103	MOVX A,@DPTR
+4104	MOV B,A
+4106	INC DPTR
+4107	MOVX A,@DPTR
+4108	CLR C
+4109	SUBB A,B
+410B	INC DPTR
+410C	MOVX @DPTR,A
+410D	SJMP 410D
+
+(C) MULTIPLICATION
+
+MOV DPTR,#4200
+MOVX A,@DPTR
+MOV B,A
+INC DPTR
+MOVX A,@DPTR
+MUL A,B
+INC DPTR
+MOVX @DPTR,A
+MOV A,B
+INC DPTR
+MOVX @DPTR,A
+SJMP L1
+
+(D) DIVISION
+
+MOV DPTR,#4200
+MOVX A,@DPTR
+MOV B,A
+INC DPTR
+MOVX A,@DPTR
+DIV A,B
+INC DPTMOV A,B
+R
+MOVX @DPTR,A
+INC DPTR
+MOVX @DPTR,A
+SJMP L1
+
+
+algorithms:
+
+Got it! Here are the concise algorithms for each program:
+
+### (A) ADDITION
+1. Take 1st number into register B.
+2. Take 2nd number into register A.
+3. Add registers A and B.
+4. Store the result.
+
+### (B) SUBTRACTION
+1. Take 1st number into register B.
+2. Take 2nd number into register A.
+3. Subtract register B from A.
+4. Store the result.
+
+### (C) MULTIPLICATION
+1. Take 1st number into register B.
+2. Take 2nd number into register A.
+3. Multiply registers A and B.
+4. Store the result.
+
+### (D) DIVISION
+1. Take 1st number into register B.
+2. Take 2nd number into register A.
+3. Divide register A by B.
+4. Store the quotient and remainder.

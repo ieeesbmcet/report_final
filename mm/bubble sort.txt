@@ -1,0 +1,67 @@
+BUBBLE SORT
+
+(A) SORTING - ASCENDING
+
+1000	MOV SI,2000
+1004	MOV CH,[SI]
+1006	DEC CH
+1008	MOV SI,2000
+100C	MOV CI,[SI]
+100E	DEC CL
+1010	INC SI
+1011	MOV AL,[SI]
+1013	CMP AL,[SI+1]
+1016	JC 101D
+1018	XCHG AL,[SI+1]
+101B	MOV[SI],AL
+101D	DEC CL
+101F	JNZ 1010
+1021	DEC CH
+1023	JNZ 1008
+1025	HLT
+
+(B) SORTING - DESCENDING
+
+1000	MOV SI,2000
+1004	MOV CH,[SI]
+1006	DEC CH
+1008	MOV SI,2000
+100C 	MOV CL,[SI]
+100E	DEC CL
+1010	INC SI
+1011	MOV AL,[SI]
+1013	CMP AL,[SI+1]
+1016	JNC 101D
+1018	XCHG AL,[SI+1]
+101B	MOV[SI],AL
+101D	DEC CL
+101F	JNZ 1010
+1021	DEC CH
+1023	JNZ 1008
+1025	HLT
+
+
+
+//algorithm
+
+Here are the concise algorithms for the bubble sort implementations (ascending and descending):
+
+### (A) Bubble Sort - Ascending
+1. Load the number of elements into register CH.
+2. Decrement CH to set up for sorting.
+3. Set the outer loop counter to the number of elements.
+4. Initialize index SI to the start of the array.
+5. Compare each element with the next:
+   - If the current element is greater than the next, swap them.
+6. Repeat until the entire array is sorted.
+
+### (B) Bubble Sort - Descending
+1. Load the number of elements into register CH.
+2. Decrement CH to set up for sorting.
+3. Set the outer loop counter to the number of elements.
+4. Initialize index SI to the start of the array.
+5. Compare each element with the next:
+   - If the current element is less than the next, swap them.
+6. Repeat until the entire array is sorted.
+
+These algorithms outline the logic for sorting an array in ascending and descending order using the bubble sort method.

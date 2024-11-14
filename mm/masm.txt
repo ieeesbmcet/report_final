@@ -1,0 +1,174 @@
+MASM PROGRAM TO PERFORM ADDITION 
+
+
+.model small
+.data
+msg1 db,0ah,0dh,"enter the first number : $"
+msg2 db,0ah,0dh,"enter the second number : $"
+msg3 db,0ah,0dh,"The sum is: $"
+print macro msg
+lea dx,msg
+mov ah,09h
+int 21h
+endm
+read macro num
+mov ah,01h
+int 21h
+endm
+display macro char
+mov dl,char
+mov ah,02h
+int 21h
+endm
+.code
+start:
+mov ax,@data
+mov ds,ax
+print msg1
+read 
+mov cl,al
+read 
+mov ch,al
+print msg2
+read
+mov bl,al
+read 
+mov bh,al
+add cl,bl
+mov al,cl
+mov ah,00h
+aaa
+mov cl,al
+add ch,bh
+mov al,ch
+mov ah,00h
+aaa
+mov ch,al
+add cl,30h
+add ch,30h
+print msg3
+display cl
+display ch
+mov ah,4ch
+int 21h
+end start
+
+
+MASM PROGRAM TO PERFORM SUBTRACTION
+
+
+.model small
+.data
+msg1 db,0ah,0dh,"enter the first number : $"
+msg2 db,0ah,0dh,"enter the second number : $"
+msg3 db,0ah,0dh,"The difference is: $"
+print macro msg
+lea dx,msg
+mov ah,09h
+int 21h
+endm
+read macro num
+mov ah,01h
+int 21h
+endm
+display macro char
+mov dl,char
+mov ah,02h
+int 21h
+endm
+.code
+start:
+mov ax,@data
+mov ds,ax
+print msg1
+read 
+mov cl,al
+read 
+mov ch,al
+print msg2
+read
+mov bl,al
+read 
+mov bh,al
+sub cl,bl
+mov al,cl
+mov ah,00h
+aas
+mov cl,al
+sub ch,bh
+mov al,ch
+mov ah,00h
+aas
+mov ch,al
+add cl,30h
+add ch,30h
+print msg3
+display cl
+display ch
+mov ah,4ch
+int 21h
+end start
+
+
+MASM PROGRAM TO DISPLAY A STRING
+
+
+.model stt                          
+.data                                   
+        msg db 10d,13d,"Hello World$"   
+
+.code                                   
+        mov ax,@data                    
+        mov ds,ax                       
+                                        
+        lea dx,msg                      
+        mov ah,09h                      
+        int 21h                         
+
+        mov ah,4ch                      
+        int 21h                         
+end           
+
+
+
+
+STEPS TO EXECUTE A PROGRAM
+STEP 1             Open 
+
+
+STEP2 	         mount c  c:/8086
+STEP 3          c:
+STEP 4          edit (new window will appear > type pgm>save as – pgm name.asm >alt f1)
+STEP 5          masm filename.asm (object file will be created)
+STEP 6         link filename (exe file will be created)
+STEP 7         filename.exe ( program will be executed)
+
+
+//algorithm
+
+MASM Program to Perform Addition 
+1. Prompt for the first number.
+2. Read the first number.
+3. Prompt for the second number.
+4. Read the second number.
+5. Add the two numbers.
+6. Adjust for BCD.
+7. Display the sum.
+
+MASM Program to Perform Subtraction
+1. Prompt for the first number.
+2. Read the first number.
+3. Prompt for the second number.
+4. Read the second number.
+5. Subtract the second number from the first.
+6. Adjust for BCD.
+7. Display the difference.
+
+Algorithm to Display a String
+1. Initialize the data segment.
+2. Load the string address into DX.
+3. Set AH to `09h`.
+4. Call `int 21h` to display the string.
+5. Exit the program with `int 21h`.
+These steps summarize the main logic of each program without going into detail.
+

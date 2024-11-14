@@ -1,0 +1,70 @@
+8051 LOGIC & BOOLEAN
+
+(A) AND OPERATION
+
+4100	MOV DPTR,#4200
+4103	MOV A,@DPTR
+4104	MOV B,A
+4106	INC DPTR
+4107	MOVX A,@DPTR
+4108	ANL A,B
+410A	INC DPTR
+410B	MOVX @DPTR,A
+410C	MOV A,B
+410E 	INC DPTR
+410F	MOVX @DPTR,A
+4110	SJMP 4110
+
+(B) OR OPERATION
+
+MOV DPTR,#4200
+MOV A,@DPTR
+MOV B,A
+INC DPTR
+MOVX A,@DPTR
+ORL A,B
+INC DPTR
+MOVX @DPTR,A
+MOV A,B
+INC DPTR
+MOVX @DPTR,A
+SJMP L1
+
+(C) XOR OPERATION
+
+MOV DPTR,#4200
+MOVX A,@DPTR
+MOV B,A
+INC DPTR
+MOVX @DPTR,A
+XRL A,B
+INC DPTR
+MOVX @DPTR,A
+MOV A,B
+INC DPTR
+MOVX @DPTR,A
+SJMP L1
+
+//algorithms
+
+8051 logical operations:
+
+ (A) AND OPERATION
+1. Take 1st number into register B.
+2. Take 2nd number into register A.
+3. Perform AND operation between registers A and B.
+4. Store the result.
+
+(B) OR OPERATION
+1. Take 1st number into register B.
+2. Take 2nd number into register A.
+3. Perform OR operation between registers A and B.
+4. Store the result.
+
+ (C) XOR OPERATION
+1. Take 1st number into register B.
+2. Take 2nd number into register A.
+3. Perform XOR operation between registers A and B.
+4. Store the result.
+
+

@@ -1,0 +1,168 @@
+8 AND 16 BIT ARITHMETIC
+
+(A) 8 BIT ADDITION
+
+1000	MOV AL,[2000]
+1004	MOV BL,[2001]
+1008	ADD AL,BL
+100A	MOV [3000],AL
+100E	HLT
+
+(B) 8 BIT SUBTRACTION
+
+1000	MOV AL,[2000]
+1004	MOV BL,[2001]
+1008	SUB AL,BL
+100A	MOV [3000],AL
+100E	HLT
+
+(C) 8 BIT MULTIPLICATION
+
+1000	MOV AL,[2000]
+1004	MOV BL,[2001]
+1008	MUL BL
+100A	MOV [3000],AL
+100E	HLT
+
+(D) 8 BIT DIVISION
+
+1000	MOV AL,[2000]
+1004	MOV BL,[2001]
+1008	DIV BL
+100A	MOV [3000],AL
+100E	MOV [3001],AH
+100F	HLT
+
+(E) 16 BIT ADDITION
+
+1000	MOV AX,[2000]
+1004	MOV BX,[2002]
+1008	ADD AX,BX
+100A	MOV [3000],AX
+100E	HLT
+
+(F) 16 BIT SUBTRACTION
+
+1000	MOV AX,[2000]
+1004	MOV BX,[2002]
+1008	SUB AX,BX
+100A	MOV [3000],AX
+100E	HLT
+
+(G) 16 BIT MULTIPLICATION
+
+1000	MOV AX,[2000]
+1004	MOV BX,[2002]
+1008	MUL BX
+100A	MOV [3000],AX
+100E	MOV [3002],BX
+1012	HLT
+
+(H) 16 BIT DIVISION
+
+1000	MOV AX,[2000]
+1004	MOV BX,[2002]
+1008	DIV BX
+100A	MOV [3000],AX
+100E	MOV [3002],BX
+1012	HLT
+
+(I) 16 BIT ADDITION WITH CARRY
+
+1000	MOV AX,[2000]
+1004	MOV BX,[2002]
+1008	MOV CX,0000
+100C	ADD AX,BX
+100E	JNC 1011
+1010	INC CX
+1011	MOV [2004],AX
+1015	MOV [2006],CX
+1019	HLT
+
+(J) 16 BIT SUBTRACTION WITH BORROW:
+
+1000	MOV AX,[2000]
+1004	MOV BX,[2002]
+1008	MOV CX,0000
+100C	SUB AX,BX
+100E	JNC 1017
+1010	INC CX
+1011	NOT AX
+1013	ADD AX,0001
+1017	MOV[2004],AX
+101B	MOV[2006],CX
+101F	HLT
+
+
+
+//algorithms
+
+8 bit and 16 bit arth
+Note: Replace `AL` and `BL` with `AX` and `BX` in 16-bit operations.
+
+
+(A) 8-Bit Addition
+1. Load first number into AL.
+2. Load second number into BL.
+3. Add BL to AL.
+4. Store the result in memory.
+
+(B) 8-Bit Subtraction
+1. Load first number into AL.
+2. Load second number into BL.
+3. Subtract BL from AL.
+4. Store the result in memory.
+
+ (C) 8-Bit Multiplication
+1. Load first number into AL.
+2. Load second number into BL.
+3. Multiply AL by BL.
+4. Store the result in memory.
+
+ (D) 8-Bit Division
+1. Load dividend into AL.
+2. Load divisor into BL.
+3. Divide AL by BL.
+4. Store quotient in memory and remainder in another location.
+
+ (E) 16-Bit Addition
+1. Load first number into AX.
+2. Load second number into BX.
+3. Add BX to AX.
+4. Store the result in memory.
+
+ (F) 16-Bit Subtraction
+1. Load first number into AX.
+2. Load second number into BX.
+3. Subtract BX from AX.
+4. Store the result in memory.
+
+ (G) 16-Bit Multiplication
+1. Load first number into AX.
+2. Load second number into BX.
+3. Multiply AX by BX.
+4. Store the result (lower part) in memory and higher part in another location.
+
+(H) 16-Bit Division
+1. Load dividend into AX.
+2. Load divisor into BX.
+3. Divide AX by BX.
+4. Store quotient in memory and remainder in another location.
+
+ (I) 16-Bit Addition with Carry
+1. Load first number into AX.
+2. Load second number into BX.
+3. Initialize carry register (CX) to 0.
+4. Add BX to AX.
+5. If carry occurs, increment CX.
+6. Store result and carry in memory.
+
+ (J) 16-Bit Subtraction with Borrow
+1. Load first number into AX.
+2. Load second number into BX.
+3. Initialize borrow register (CX) to 0.
+4. Subtract BX from AX.
+5. If borrow occurs, increment CX and adjust AX.
+6. Store result and borrow in memory.
+
+

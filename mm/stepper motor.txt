@@ -1,0 +1,39 @@
+LOOK UP TABLE:
+
+ANTI CLOCWISE:
+
+1200 : 09
+1201 : 05
+1202 : 06
+1203 : 0A
+
+CLOCLWISE:
+
+1200 : 0A
+1201 : 06
+1202 : 05
+1203 : 09
+
+
+PROGRAM:
+
+1000	MOV DI,1200
+1004	MOV CL,04
+1007 	MOV AL,[DI]
+1009	OUT C0,AL
+100B	MOV DX,1010H
+100F	DEC DX
+1010	JNZ 100F
+1012	INC DI
+1013 	LOOP 1007
+1015	JMP 1000
+
+
+//algorithm
+Stepper motor
+1. Initialize `DI` to 1200 and `CL` to 4.
+2. Load value from memory at `DI` into `AL`.
+3. Output `AL` to port C0.
+4. Delay by looping until `DX` decrements to 0.
+5. Increment `DI` and repeat until `CL` decrements to 0.
+6. Loop back to step 1.
